@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Queue;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -261,6 +262,26 @@ public final class HadoopUtils {
         }
 
         return ret;
+    }
+    
+    
+    /**
+     * 将outContent的信息写入hdfs中
+     * 
+     * @param fs
+     * @param outPath
+     * @param outContent
+     * @throws IOException
+     */
+    public static void writeContentToHDFS(FileSystem fs, Path outPath,
+            String outContent) throws IOException {
+        FSDataOutputStream outputStream = null;
+        try {
+            outputStream = fs.create(outPath);
+            outputStream.write(outContent.getBytes(), 0, outContent.length());
+        } finally {
+            outputStream.close();
+        }
     }
 
     public static void main(String[] args) {
