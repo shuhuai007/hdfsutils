@@ -18,13 +18,9 @@
 
 	<property name="jar.file" location="${build.dir}/${jar.name}.jar" />
 	<property name="lib.dir" location="${basedir}/lib" />
-	<property name="genjar.file" location="${build.dir}/${genjar.name}.jar" />
 
 	<property name="src.dir" location="src" />
 	<property name="src.java.dir" location="${src.dir}/java" />
-	<property name="src.proto.dir" location="${src.dir}/proto" />
-	<property name="src.gen.java.dir" location="${src.dir}/gen-java" />
-	<property name="src.gen.python.dir" location="${src.dir}/gen-python" />
 	<property name="src.test.dir" location="${src.dir}/test" />
 
 	<target name="init">
