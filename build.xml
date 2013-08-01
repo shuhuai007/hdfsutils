@@ -1,0 +1,98 @@
+<project name="hdfsutils" default="jar" basedir=".">
+
+	<property file="build.properties" />
+
+	<!-- Global properties for this build -->
+	<property name="jar.name" value="hdfsutils" />
+	<property name="version" value="SNAPSHOT" />
+	<property name="package.name" value="${jar.name}-${version}" />
+	<property name="java.debug" value="true" />
+
+	<!-- Directories -->
+	<property name="build.dir" location="build" />
+	<property name="build.cache.dir" location="${build.dir}/cache" />
+	<property name="javadoc.dir" location="javadoc" />
+	<property name="classes.dir" location="${build.dir}/classes" />
+	<property name="dist.dir" location="dist" />
+	<property name="dist.java.dir" location="${dist.jar}/java" />
+
+	<property name="jar.file" location="${build.dir}/${jar.name}.jar" />
+	<property name="lib.dir" location="${basedir}/lib" />
+	<property name="genjar.file" location="${build.dir}/${genjar.name}.jar" />
+
+	<property name="src.dir" location="src" />
+	<property name="src.java.dir" location="${src.dir}/java" />
+	<property name="src.proto.dir" location="${src.dir}/proto" />
+	<property name="src.gen.java.dir" location="${src.dir}/gen-java" />
+	<property name="src.gen.python.dir" location="${src.dir}/gen-python" />
+	<property name="src.test.dir" location="${src.dir}/test" />
+
+	<target name="init">
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<macrodef name="compile-source">
+		<sequential>
+			<!-- Compile the java code from ${src.java} into ${build} -->
+			<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${java.debug}" debuglevel="lines,vars,source">
+				<classpath>
+					<fileset dir="./lib">
+						<include name="**/*.jar" />
+					</fileset>
+				</classpath>
+			</javac>
+		</sequential>
+	</macrodef>
+
+	<target name="jar" depends="compile">
+		<delete file="${jar.file}" />
+		<property name="jar.properties.list" value="log4j.properties" />
+
+		<jar jarfile="${jar.file}">
+			<fileset dir="${classes.dir}" />
+			<fileset dir=".">
+				<include name="lib/*.jar" />
+			</fileset>
+			<!-- <manifest>
+				<attribute name="Main-Class" value="com.allyes.ifcetl.IFCLogProcessJob"/>
+			</manifest>
+			 -->
+		</jar>
+	</target>
+	
+	<macrodef name="compile-gen-source">
+		<sequential>
+			<!-- Compile the java code from ${src.java} into ${build} -->
+			<javac srcdir="${src.gen.java.dir}" destdir="${classes.dir}" debug="${java.debug}" debuglevel="lines,vars,source">
+				<classpath>
+					<fileset dir="./lib">
+						<include name="**/*.jar" />
+					</fileset>
+				</classpath>
+			</javac>
+		</sequential>
+	</macrodef>
+
+	<target name="jar-all" depends="jar">
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<compile-source />
+	</target>
+	
+	<target name="gen-compile" depends="init" description="compile the java gen source">
+		<compile-gen-source />
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build.dir}" />
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+</project>
+
