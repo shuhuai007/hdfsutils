@@ -54,7 +54,7 @@
 			</fileset>
 			<manifest>
 				<!-- <attribute name="Main-Class" value="com.allyes.ifcetl.IFCLogProcessJob"/> -->
-				<attribute name="Class-Path" value="lib/*.jar"/>
+				<attribute name="Class-Path" value="lib/commons-lang-2.4.jar"/>
 			</manifest>
 			
 		</jar>
