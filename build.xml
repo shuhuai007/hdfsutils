@@ -52,10 +52,11 @@
 			<fileset dir=".">
 				<include name="lib/*.jar" />
 			</fileset>
-			<!-- <manifest>
-				<attribute name="Main-Class" value="com.allyes.ifcetl.IFCLogProcessJob"/>
+			<manifest>
+				<!-- <attribute name="Main-Class" value="com.allyes.ifcetl.IFCLogProcessJob"/> -->
+				<attribute name="Class-Path" value="lib/*.jar"/>
 			</manifest>
-			 -->
+			
 		</jar>
 	</target>
 	
