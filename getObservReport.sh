@@ -1,1 +1,0 @@
-java -cp build/hdfsutils.jar com.allyes.hdfsutils.GetObservReportJSON --hdfsHostUrl=hdfs://sm98:9000  --observReportHDFSDir=/user/hadoop/mifc_etl/output_observer_report  --observReportBEDir=/home/hadoop/zhoujie/project/hdfsutils
