@@ -2,7 +2,7 @@
 
 if [ $# -le 0 ]
 then
-  echo 'you must pass the necessary parameter using "--hdfsHostUrl=hdfs://sm98:9000  --observReportHDFSDir=/user/hadoop/mifc_etl/output_observer_report  --observReportBEDir=/home/hadoop/zhoujie/project/hdfsutils"'
+  echo 'you must pass the necessary parameter using "--hdfsHostUrl hdfs://sm98:9000  --observReportHDFSDir /user/hadoop/mifc_etl/output_observer_report  --observReportBEDir  /home/hadoop/zhoujie/project/hdfsutils"'
   exit;
 fi
 
