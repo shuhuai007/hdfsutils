@@ -54,7 +54,9 @@
 			</fileset>
 			<manifest>
 				<!-- <attribute name="Main-Class" value="com.allyes.ifcetl.IFCLogProcessJob"/> -->
-				<attribute name="Class-Path" value="lib/commons-lang-2.4.jar"/>
+				<attribute name="Class-Path" value="lib/commons-lang-2.4.jar lib/commons-beanutils.jar lib/commons-codec-1.4.jar lib/commons-collections-3.2.1.jar
+				                                    lib/commons-logging-1.1.1.jar lib/elephant-bird-2.0.3.jar  lib/ezmorph-1.0.6.jar  lib/guava-r06.jar lib/hadoop-core-0.20.2-cdh3u0.jar
+				                                    lib/hadoop-lzo-0.4.12.jar lib/libthrift.jar  lib/protobuf-java-2.3.0.jar"/>
 			</manifest>
 			
 		</jar>
